@@ -19,6 +19,7 @@ angular
   ])
   
   .config(function ($stateProvider, $urlRouterProvider) {
+
     $stateProvider
       .state('main', {
         url: '/',
@@ -29,6 +30,21 @@ angular
         url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .state('payment', {
+        url: '/payment',
+        templateUrl: 'views/payment.html',
+        controller: 'PaymentCtrl'
+      })
+      .state('portfolio', {
+        url: '/portfolio',
+        templateUrl: 'views/portfolio.html',
+        controller: 'PortfolioCtrl'
+      })
+      .state('inquire', {
+        url: '/inquire',
+        templateUrl: 'views/inquire.html',
+        controller: 'InquireCtrl'
       });
       
     $urlRouterProvider

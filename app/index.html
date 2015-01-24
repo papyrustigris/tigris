@@ -18,17 +18,23 @@
     <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
     <style>
       
-      html {
+      html,body {
         font-family: 'Questrial', sans-serif;
       }
-
-      body{
-        background: url('styles/images/compbkgrnd.png');
-        background-size: 100% ;
+      body {
+        background: url('styles/images/tigercub.jpg');
+        background-size: 1608px 1072px;
       }
-
       .side-nav {
         height:100%;
+      }
+      .vertical-align {
+        display:flex;
+        align-items:center;
+      }
+
+      #box {
+        padding:40px; margin-top:80px; background-color:white; border-radius:6px;
       }
 
   
@@ -66,7 +72,7 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong>Matt Elia</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -158,51 +164,28 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li>
                         <a ui-sref="about"><i class="fa fa-fw fa-dashboard"></i> About</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a ui-sref="portfolio"><i class="fa fa-fw fa-table"></i> Portfolio</a>
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                        <a ui-sref="payment"><i class="fa fa-fw fa-bar-chart-o"></i> Payment</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                        <a ui-sref="inquire"><i class="fa fa-fw fa-dashboard"></i> Inquire</a>
                     </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
+                   
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
-    
+
       <div ui-view=""></div>
 
-    <div class="footer">
-      <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-    </div>
+
 
 
 
