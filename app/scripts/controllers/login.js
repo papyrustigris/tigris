@@ -18,11 +18,23 @@ angular.module('tigrisApp')
    	fbRef = $firebase(ref.child('/users/facebook/')),
    	googleRef = $firebase(ref.child('/users/google/')),
    	twitterRef = $firebase(ref.child('/users/twitter/')),
-	emailRef = $firebase(ref.child('/users/email/')),
+	passRef = $firebase(ref.child('/users/pass/')),
 	
 	toggleLogin = '';
 
 	$scope.loginEmailPass = function () {
+		auth.$authWithPassword({
+		  email: $scope.email,
+		  password: $scope.password
+		}).then(function(authData) {
+		  console.log("Logged in as:", authData.uid);
+		  passRef.$push(authData);
+		}).catch(function(error) {
+		  console.error("Error: ", error);
+		});
+	};
+
+	$scope.registerEmailPass = function () {
 		Auth.$createUser({
 		  email: $scope.email,
 		  password: $scope.password 
@@ -34,22 +46,9 @@ angular.module('tigrisApp')
 		  });
 		}).then(function(authData) {
 		  console.log("Logged in as:", authData.uid);
+		  passRef.$push(authData);
 		}).catch(function(error) {
 		  console.error("Error: ", error);
-		});
-};
-
-	$scope.registerEmailPass = function () {
-		emailRef.$createUser({
-			email: $scope.users.email,
-			password: $scope.users.password
-		}, function (error) {
-			if (error === null) {
-				console.log('user created successfully');
-
-			} else {
-				console.log('error creating user:', error);
-			}
 		});
 	};
 
