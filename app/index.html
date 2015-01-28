@@ -39,7 +39,7 @@
       }
 
       #box {
-        padding:40px; margin-top:120px; margin-bottom:40px; 
+        padding:40px; margin-top:100px; margin-bottom:40px; 
         background-color:white; opacity:0.98;
         border:1px solid #222;  border-radius:6px;
       }
@@ -76,61 +76,9 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>Matt Elia</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
+                
                 <li class="dropdown" ng-controller="AuthCtrl">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-cloak><i class="fa fa-user"></i> {{ user.facebook.displayName }} {{ user.google.displayName }} {{ user.twitter.displayName }}<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-cloak><i class="fa fa-user"></i> {{ user.facebook.displayName }} {{ user.google.displayName }} {{ user.twitter.displayName }} {{ user.email }}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>

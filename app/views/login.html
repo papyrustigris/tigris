@@ -1,8 +1,7 @@
 <div id="box" class="container" style="text-align:center;">
-  <h2>Login Page</h2>
-
+  <h1>Login</h1>
+  <hr>
 <fieldset>
-  <legend>Oauth</legend>
   <br>
   <p>
     <button  class="btn btn-primary login-buttons" ng-click="doLoginFb()"><i class="fa fa-facebook"></i> &nbsp; Facebook</button>
@@ -22,11 +21,11 @@
     <form role="form" ng-hide="toggleLogin" >
     <p class="form-group">
       <label for="loginEmail">email</label>
-      <input id="loginEmail" required name="email" type="email" ng-model="users.email" class="form-control" />
+      <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control" />
     </p>
     <p class="form-group">
       <label for="loginPass">password</label>
-      <input id="loginPass" required name="pass" type="password" ng-model="users.pass" class="form-control" />
+      <input id="loginPass" required name="pass" type="password" ng-model="password" class="form-control" />
     </p>
     <br>
     <p>

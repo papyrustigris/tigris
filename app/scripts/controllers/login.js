@@ -10,7 +10,7 @@
  * Controller of the tigrisApp
  */
 angular.module('tigrisApp')
-  .controller('LoginCtrl', function ($scope, $firebase, $firebaseAuth, $state, FB_URL) {
+  .controller('LoginCtrl', function ($scope, $firebase, $firebaseAuth, $state, FB_URL, Auth) {
     var ref = new Firebase(FB_URL),
    	// sync = $firebase(ref),
    	auth = $firebaseAuth(ref),
@@ -23,19 +23,21 @@ angular.module('tigrisApp')
 	toggleLogin = '';
 
 	$scope.loginEmailPass = function () {
-		auth.$authWithPassword({
-			email: $scope.user.email,
-			password: $scope.user.password
-		}, function (err,authData) {
-			if (err) {
-				$scope.message = 'login error';
-				console.log(err);
-			} else {
-				$scope.message = 'login successful';
-				console.log(authData);
-			}
+		Auth.$createUser({
+		  email: $scope.email,
+		  password: $scope.password 
+		}).then(function(userData) {
+		  console.log("User " + userData.uid + " created successfully!");
+		  return auth.$authWithPassword({
+		    email: $scope.email,
+		    password: $scope.password
+		  });
+		}).then(function(authData) {
+		  console.log("Logged in as:", authData.uid);
+		}).catch(function(error) {
+		  console.error("Error: ", error);
 		});
-	};
+};
 
 	$scope.registerEmailPass = function () {
 		emailRef.$createUser({
@@ -87,6 +89,6 @@ angular.module('tigrisApp')
 
 	$scope.logout = function () {
 		ref.unauth();
-		$state.go('login')
-	}
+		$state.go('login');
+	};
   });
