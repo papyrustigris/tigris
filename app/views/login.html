@@ -1,0 +1,41 @@
+<div id="box" class="container" style="text-align:center;">
+  <h2>Login Page</h2>
+
+<fieldset>
+  <legend>Oauth</legend>
+  <br>
+  <p>
+    <button  class="btn btn-primary login-buttons" ng-click="doLoginFb()"><i class="fa fa-facebook"></i> &nbsp; Facebook</button>
+    <button  class="btn btn-danger login-buttons" ng-click="doLoginGoogle()"><i class="fa fa-google"></i> &nbsp; Google</button>
+    <button  class="btn btn-info login-buttons" ng-click="doLoginTwitter()"><i class="fa fa-twitter"></i> &nbsp; Twitter</button>
+  </p>
+</fieldset>
+
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <br>
+    <div class="row" ng-show="toggleLogin">
+      <big>or</big><br><br>
+      <button class="btn btn-success login-buttons" ng-show="toggleLogin" ng-click="toggleLogin = false">Login with Email & Password</button>
+    </div>
+    <form role="form" ng-hide="toggleLogin" >
+    <p class="form-group">
+      <label for="loginEmail">email</label>
+      <input id="loginEmail" required name="email" type="email" ng-model="users.email" class="form-control" />
+    </p>
+    <p class="form-group">
+      <label for="loginPass">password</label>
+      <input id="loginPass" required name="pass" type="password" ng-model="users.pass" class="form-control" />
+    </p>
+    <br>
+    <p>
+      <button  class="btn btn-success" ng-click="loginEmailPass()">Log In</button>
+      <button  class="btn btn-warning" ng-click="registerEmailPass()">Register</button>
+    </p>
+    </form>
+  </div>
+</div>
+<p ng-show="err" class="bg-danger" ng-model="message">{{ message }}</p>
+</div>
+
