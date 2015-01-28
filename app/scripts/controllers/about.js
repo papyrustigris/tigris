@@ -8,10 +8,9 @@
  * Controller of the tigrisApp
  */
 angular.module('tigrisApp')
-  .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('AboutCtrl', ['$scope', '$firebaseAuth', 'currentAuth',  function($scope, $firebaseAuth, currentAuth) {
+    var ref = new Firebase("https://papertigers.firebaseio.com/");
+    var auth = $firebaseAuth(ref);
+
+    resolve.currentAuth();
+  }]);

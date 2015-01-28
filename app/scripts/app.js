@@ -29,67 +29,98 @@ angular
   .config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
+     
       .state('login', {
         url: '/',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
-        authenticate: false
+        resolve: {
+        // controller will not be loaded until $waitForAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        "currentAuth": ["Auth", function(Auth) {
+          // $waitForAuth returns a promise so the resolve waits for it to complete
+          return Auth.$waitForAuth();
+        }]
+      }
       })
       .state('about', {
         url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
-        authenticate: true 
+        resolve: {
+        // controller will not be loaded until $requireAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        "currentAuth": ["Auth", function(Auth) {
+          // $requireAuth returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $stateChangeError (see above)
+          return Auth.$requireAuth();
+        }]
+      }
+
       })
       .state('payment', {
         url: '/payment',
         templateUrl: 'views/payment.html',
         controller: 'PaymentCtrl',
-        authenticate: true
+        resolve: {
+        // controller will not be loaded until $requireAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        "currentAuth": ["Auth", function(Auth) {
+          // $requireAuth returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $stateChangeError (see above)
+          return Auth.$requireAuth();
+        }]
+      }
+   
       })
       .state('portfolio', {
         url: '/portfolio',
         templateUrl: 'views/portfolio.html',
         controller: 'PortfolioCtrl',
-        authenticate: true
+        resolve: {
+        // controller will not be loaded until $requireAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        "currentAuth": ["Auth", function(Auth) {
+          // $requireAuth returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $stateChangeError (see above)
+          return Auth.$requireAuth();
+        }]
+      }
+
       })
       .state('inquire', {
         url: '/inquire',
         templateUrl: 'views/inquire.html',
         controller: 'InquireCtrl',
-        authenticate: true
+        resolve: {
+        // controller will not be loaded until $requireAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        "currentAuth": ["Auth", function(Auth) {
+          // $requireAuth returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $stateChangeError (see above)
+          return Auth.$requireAuth();
+        }]
+      }
+   
       });
       
     $urlRouterProvider
       .otherwise('/');
   })
 
-  .run(function($rootScope, $state, $stateParams) {
+  .run(function($rootScope, $state, $stateParams, Auth) {
     // It's very handy to add references to $state and $stateParams to the $rootScope
     // so that you can access them from any scope within your applications.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-
-    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams, Auth){
-      if (toState.authenticate && !Auth.isAuthenticated()){
-        // User isn’t authenticated
-        $state.transitionTo("login");
-        event.preventDefault(); 
-      }
-    });
-
-    function authDataCallback(authData) {
-      if (authData) {
-        console.log('User ' + authData.uid + ' is logged in with ' + authData.provider);
-        $state.go('about');
-      } else {
-        console.log('User is logged out');
-        $state.go('login');
-      }
-    }
-    // Register the callback to be fired every time auth state changes
-    var ref = new Firebase('https://papertigers.firebaseio.com');
-    ref.onAuth(authDataCallback);
     
+    $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
+      var authorization = toState.data.authorization;
+
+      if(!Security.isAuthenticated() && authorization !== false){
+        event.preventDefault();
+        $state.go('login');
+      };
     });
+  });
   
