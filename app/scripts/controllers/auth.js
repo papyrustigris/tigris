@@ -10,7 +10,11 @@
  * Controller of the tigrisApp
  */
 angular.module('tigrisApp')
-  .controller('AuthCtrl', ['$scope', 'Auth', function ($scope, Auth) {
-    $scope.auth = Auth;
-    $scope.user = $scope.auth.$getAuth();
-  }]);
+  .controller("AuthCtrl", ["$scope", "$timeout", "Auth", function($scope, $timeout, Auth) {
+	  $scope.auth = Auth;
+	  $scope.auth.$onAuth(function(authData) {
+	    $timeout(function() {
+	      $scope.user = authData;
+	    });
+	  });
+	}]);
