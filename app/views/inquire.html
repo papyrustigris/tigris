@@ -4,25 +4,30 @@
   <h1>Inquiry</h1>
   <hr>
   <form role="form" action="" method="post" >
-
+    <div class="col-md-6">
       <div class="form-group">
-        <label for="InputName">Your Name</label>
+        
         <div class="input-group">
           <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
           <span class="input-group-addon"></div>
       </div>
+    </div>
+    <div class="col-md-6">
       <div class="form-group">
-        <label for="InputEmail">Your Email</label>
+    
         <div class="input-group">
           <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
           <span class="input-group-addon"></div>
       </div>
+    </div>
+    <div class="col-md-12">
       <div class="form-group">
-        <label for="InputMessage">Message</label>
+        
         <div class="input-group">
-          <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+          <textarea name="InputMessage" placeholder="Enter Message" id="InputMessage" class="form-control" rows="5" required ng-model='message'></textarea>
           <span class="input-group-addon"></div>
       </div>
+    </div>
       <div style="text-align:center;">
         <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info">
       </div>

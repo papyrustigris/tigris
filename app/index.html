@@ -25,13 +25,14 @@
       }
       
       .navbar {
-        background-color: #292D33;
-        border: 1px solid #292D33;
+        background-color: #291B0A;
+        border: 1px solid #291B0A;
       }
        
       .side-nav {
         height:100%;
-        background-color:#3D444B;
+        background-color:#FBECD9;
+
       }
       .vertical-align {
         display:flex;
@@ -41,7 +42,7 @@
       #box {
         padding:40px; margin-top:100px; margin-bottom:40px; 
         background-color:white; opacity:0.98;
-        border:1px solid #222;  border-radius:6px;
+        border-radius:6px;
       }
 
       .login-buttons {
@@ -49,8 +50,26 @@
         padding:8px;
         padding-right: 30px;
         padding-left:30px;
+        border-radius:4px;
       }
 
+      .navbar-inverse .navbar-nav > li > a {
+        color:black;
+        font-size: 15px;
+      }
+
+      .navbar-inverse .navbar-brand {
+        color:white;
+        font-size: 20px;
+      }
+
+      .top-nav>li>a {
+        color:white;
+      }
+
+      h1,p,a {
+        color:#472611;
+      }
   
     </style>
   </head>
@@ -78,16 +97,13 @@
             <ul class="nav navbar-right top-nav">
                 
                 <li class="dropdown" ng-controller="AuthCtrl">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-cloak><i class="fa fa-user"></i> {{ user.facebook.displayName }} {{ user.google.displayName }} {{ user.twitter.displayName }} {{ user.password.email }}<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-cloak><i class="fa fa-user" ng-show="user"></i>&nbsp; {{ user.facebook.displayName }} {{ user.google.displayName }} {{ user.twitter.displayName }} {{ user.password.email }}<b class="caret" ng-show="user"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="#/account"><i class="fa fa-fw fa-user"></i> Account</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
                         <li>

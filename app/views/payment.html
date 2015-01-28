@@ -1,24 +1,29 @@
   <div id="box" class="container">	
-
-
     <div class='row'>
-        
-          <div class='col-md-12 form-group'>
-          <h1>Payment</h1>
-          <hr class="featurette-divider"></hr>
-          <p>Pay using Stripe.js</p>
-          <hr class="featurette-divider"></hr>
-            <form action="" method="POST">
-              <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-                data-amount="2000"
-                data-name="Papyrus Tigris LLC"
-                data-description="1 widgets ($1.00)"
-                data-image="/128x128.png">
-              </script>
-            </form>
-          </div>
+      <div class='col-md-12 form-group'>
+        <h1>Payment</h1>
+        <hr class="featurette-divider"></hr>
+      
+        <div class="col-md-10 col-md-offset-1">
+          <p class="pull-left">Pay using Stripe.js</p>
+          <form class="pull-right" action="" method="POST">
+            <script
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+              data-amount="2000"
+              data-name="Papyrus Tigris LLC"
+              data-description="1 widgets ($1.00)"
+              data-image="/128x128.png">
+            </script>
+          </form>
+          <br><br><br>
+          <p class="pull-left">Pay using PayPal</p>
+          <form class="pull-right" action="" method="POST">
+            
+          </form>
+        </div>
+      
+    </div>
          
     </div>
 </div>

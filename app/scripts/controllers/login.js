@@ -27,10 +27,10 @@ angular.module('tigrisApp')
 		  email: $scope.email,
 		  password: $scope.password
 		}).then(function(authData) {
-		  console.log("Logged in as:", authData.uid);
+		  console.log('Logged in as:', authData.uid);
 		  passRef.$push(authData);
 		}).catch(function(error) {
-		  console.error("Error: ", error);
+		  console.error('Error: ', error);
 		});
 	};
 
@@ -39,16 +39,16 @@ angular.module('tigrisApp')
 		  email: $scope.email,
 		  password: $scope.password 
 		}).then(function(userData) {
-		  console.log("User " + userData.uid + " created successfully!");
+		  console.log('User ' + userData.uid + ' created successfully!');
 		  return auth.$authWithPassword({
 		    email: $scope.email,
 		    password: $scope.password
 		  });
 		}).then(function(authData) {
-		  console.log("Logged in as:", authData.uid);
+		  console.log('logged in as:', authData.uid);
 		  passRef.$push(authData);
 		}).catch(function(error) {
-		  console.error("Error: ", error);
+		  console.error('Error: ', error);
 		});
 	};
 
@@ -88,6 +88,5 @@ angular.module('tigrisApp')
 
 	$scope.logout = function () {
 		ref.unauth();
-		$state.go('login');
 	};
   });
