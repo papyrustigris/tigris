@@ -37,11 +37,25 @@ angular
         resolve: {
         // controller will not be loaded until $waitForAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
-        "currentAuth": ["Auth", function(Auth) {
+        'currentAuth': ['Auth', function(Auth) {
           // $waitForAuth returns a promise so the resolve waits for it to complete
           return Auth.$waitForAuth();
-        }]
-      }
+          }]
+        }
+      })
+      .state('account', {
+        url: '/account',
+        templateUrl: 'views/account.html',
+        controller: 'AccountCtrl',
+        resolve: {
+        // controller will not be loaded until $requireAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        'currentAuth': ['Auth', function(Auth) {
+          // $requireAuth returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $stateChangeError (see above)
+          return Auth.$requireAuth();
+          }]
+        }
       })
       .state('about', {
         url: '/about',
@@ -50,13 +64,12 @@ angular
         resolve: {
         // controller will not be loaded until $requireAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
-        "currentAuth": ["Auth", function(Auth) {
+        'currentAuth': ['Auth', function(Auth) {
           // $requireAuth returns a promise so the resolve waits for it to complete
           // If the promise is rejected, it will throw a $stateChangeError (see above)
           return Auth.$requireAuth();
-        }]
-      }
-
+          }]
+        }
       })
       .state('payment', {
         url: '/payment',
@@ -65,7 +78,7 @@ angular
         resolve: {
         // controller will not be loaded until $requireAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
-        "currentAuth": ["Auth", function(Auth) {
+        'currentAuth': ['Auth', function(Auth) {
           // $requireAuth returns a promise so the resolve waits for it to complete
           // If the promise is rejected, it will throw a $stateChangeError (see above)
           return Auth.$requireAuth();
@@ -80,7 +93,7 @@ angular
         resolve: {
         // controller will not be loaded until $requireAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
-        "currentAuth": ["Auth", function(Auth) {
+        'currentAuth': ['Auth', function(Auth) {
           // $requireAuth returns a promise so the resolve waits for it to complete
           // If the promise is rejected, it will throw a $stateChangeError (see above)
           return Auth.$requireAuth();
@@ -95,7 +108,7 @@ angular
         resolve: {
         // controller will not be loaded until $requireAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
-        "currentAuth": ["Auth", function(Auth) {
+        'currentAuth': ['Auth', function(Auth) {
           // $requireAuth returns a promise so the resolve waits for it to complete
           // If the promise is rejected, it will throw a $stateChangeError (see above)
           return Auth.$requireAuth();
@@ -114,13 +127,12 @@ angular
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     
-    $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
-      var authorization = toState.data.authorization;
-
-      if(!Security.isAuthenticated() && authorization !== false){
-        event.preventDefault();
-        $state.go('login');
-      };
+    $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+    // We can catch the error thrown when the $requireAuth promise is rejected
+    // and redirect the user back to the home page
+    if (error === 'AUTH_REQUIRED') {
+      $state.go('login');
+      }
     });
   });
   

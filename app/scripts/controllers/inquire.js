@@ -15,7 +15,7 @@ angular.module('tigrisApp')
 
    	$scope.submitInquiry = function () {
    		
-   	}
+   	};
    	
    	
   });

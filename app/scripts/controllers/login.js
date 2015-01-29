@@ -87,6 +87,7 @@ angular.module('tigrisApp')
 	};
 
 	$scope.logout = function () {
-		ref.unauth();
+		$state.go('login');
+		auth.$unauth();
 	};
   });
