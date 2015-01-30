@@ -16,9 +16,9 @@ angular.module('tigrisApp')
 	    $timeout(function() {
 	      $scope.user = authData;
 	      
-	      if(authData){ $state.go('account') }
+	      if(authData){ $state.go('account'); }
 	      	else
-	      		{$state.go('login')};
+	      		{$state.go('about');}
 
 	    });
 	  });

@@ -1,0 +1,41 @@
+<div id="box" class="container">
+<div class="row">
+  <div class="col-md-12">
+  <h1>Inquiry</h1>
+  <hr>
+  <form>
+    <div class="col-md-6">
+      <div class="form-group">
+        
+        <div class="input-group">
+          <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required ng-model="name">
+          <span class="input-group-addon"></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+    
+        <div class="input-group">
+          <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required ng-model="email">
+          <span class="input-group-addon"></div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        
+        <div class="input-group">
+          <textarea name="InputMessage" placeholder="Enter Message" id="InputMessage" class="form-control" rows="5" required ng-model='message'></textarea>
+          <span class="input-group-addon"></div>
+      </div>
+    </div>
+      <div style="text-align:center;">
+        <button type="submit" class="btn btn-primary" ng-click="submitInquiry()">Submit</button>
+      </div>
+    </div>
+  </form>
+  <hr class="featurette-divider hidden-lg">
+  <div class="col-lg-5 col-md-push-1">
+  </div>
+</div>
+
+</div>

@@ -23,8 +23,9 @@
       
      body{
         font-family: 'Courier New';
-        background: url('styles/images/couch.jpeg');
+        background: url('styles/images/couch.jpg');
         background-size: 100%;
+        background-repeat: no-repeat;
       }
       
 
@@ -141,10 +142,10 @@
                         <a ui-sref="messages" ng-hide="!user"><i class="fa fa-fw fa-envelope"></i> &nbsp; Messages</a>
                     </li>
                     <li>
-                        <a ui-sref="account" ng-hide="!user"><i class="fa fa-dollar"></i> &nbsp; Payment</a>
+                        <a ui-sref="account" ng-hide="!user">&nbsp;<i class="fa fa-dollar"></i> &nbsp; Payment</a>
                     </li>
                     <li>
-                        <a ui-sref="inquire" ng-hide="user"><i class="fa fa-info-circle"></i> &nbsp; Inquiry</a>
+                        <a ui-sref="inquiry" ng-hide="user"><i class="fa fa-info-circle"></i> &nbsp; Inquiry</a>
                     </li>
                     <li>
                         <a href="#" ng-click="auth.$unauth()" ng-hide="!user"><i class="fa fa-fw fa-power-off"></i> &nbsp; Log Out</a>
@@ -202,7 +203,7 @@
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/auth.js"></script>
-    <script src="scripts/controllers/inquire.js"></script>
+    <script src="scripts/controllers/inquiry.js"></script>
     <script src="scripts/controllers/payment.js"></script>
     <script src="scripts/controllers/portfolio.js"></script>
     <!-- endbuild -->

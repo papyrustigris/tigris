@@ -72,10 +72,10 @@ angular
           }]
         }
       })
-      .state('inquire', {
-        url: '/inquire',
-        templateUrl: 'views/inquire.html',
-        controller: 'InquireCtrl',
+      .state('inquiry', {
+        url: '/inquiry',
+        templateUrl: 'views/inquiry.html',
+        controller: 'InquiryCtrl',
         resolve: {
         // controller will not be loaded until $requireAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
