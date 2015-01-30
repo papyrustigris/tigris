@@ -21,7 +21,9 @@ angular.module('tigrisApp')
         email: $scope.email,
         message: $scope.message 
       }).then(function(msgRef) {
-          console.log(msgRef.key());   // key for the new ly created record
+          console.log(msgRef.key());
+          $scope.name = $scope.email = $scope.message = null;
+             // key for the new ly created record
         }, function(error) {
           console.log("Error:", error);
         });
