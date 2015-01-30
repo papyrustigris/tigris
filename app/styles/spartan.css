@@ -10,3 +10,14 @@
     font-style: normal;
 
 }
+
+@font-face {
+font-family: Montserrat;
+src: url("Montserrat-Regular.otf") format("opentype");
+}
+
+@font-face {
+font-family: GraublauWeb;
+font-weight: bold;
+src: url("path-to-the-font-file/GraublauWebBold.otf") format("opentype");
+}

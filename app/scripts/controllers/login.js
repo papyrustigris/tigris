@@ -31,6 +31,7 @@ angular.module('tigrisApp')
 		  passRef.$push(authData);
 		}).catch(function(error) {
 		  console.error('Error: ', error);
+		  $scope.message = 'authentication failed: ' + error;
 		});
 	};
 
@@ -49,6 +50,7 @@ angular.module('tigrisApp')
 		  passRef.$push(authData);
 		}).catch(function(error) {
 		  console.error('Error: ', error);
+		  $scope.message = 'authentication failed: ' + error;
 		});
 	};
 
@@ -58,6 +60,7 @@ angular.module('tigrisApp')
 				console.log('authenticated successfully with payload:', authData);
 			}).catch(function(error){
 			console.log('authentication failed:', error);
+			$scope.message = 'authentication failed: ' + error;
 			});
 		});
 	};
@@ -68,6 +71,7 @@ angular.module('tigrisApp')
 				console.log('authenticated successfully with payload:', authData);
 			}).catch(function(error){
 			console.log('authentication failed:', error);
+			$scope.message = 'authentication failed: ' + error;
 			});
 		});
 	};
@@ -78,6 +82,7 @@ angular.module('tigrisApp')
 				console.log('authenticated successfully with payload:', authData);
 			}).catch(function(error){
 			console.log('authentication failed:', error);
+			$scope.message = 'authentication failed: ' + error;
 			});
 		});
 	};
@@ -87,7 +92,7 @@ angular.module('tigrisApp')
 	};
 
 	$scope.logout = function () {
-		$state.go('login');
+		$state.go('about');
 		auth.$unauth();
 	};
   });

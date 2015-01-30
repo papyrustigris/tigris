@@ -30,8 +30,23 @@ angular
 
     $stateProvider
      
-      .state('login', {
+
+      .state('about', {
         url: '/',
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        resolve: {
+        // controller will not be loaded until $requireAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        'currentAuth': ['Auth', function(Auth) {
+          // $requireAuth returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $stateChangeError (see above)
+          return Auth.$waitForAuth();
+          }]
+        }
+      })
+      .state('login', {
+        url: '/login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         resolve: {
@@ -40,6 +55,34 @@ angular
         'currentAuth': ['Auth', function(Auth) {
           // $waitForAuth returns a promise so the resolve waits for it to complete
           return Auth.$waitForAuth();
+          }]
+        }
+      })
+      .state('portfolio', {
+        url: '/portfolio',
+        templateUrl: 'views/portfolio.html',
+        controller: 'PortfolioCtrl',
+        resolve: {
+        // controller will not be loaded until $requireAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        'currentAuth': ['Auth', function(Auth) {
+            // $requireAuth returns a promise so the resolve waits for it to complete
+            // If the promise is rejected, it will throw a $stateChangeError (see above)
+            return Auth.$waitForAuth();
+          }]
+        }
+      })
+      .state('inquire', {
+        url: '/inquire',
+        templateUrl: 'views/inquire.html',
+        controller: 'InquireCtrl',
+        resolve: {
+        // controller will not be loaded until $requireAuth resolves
+        // Auth refers to our $firebaseAuth wrapper in the example above
+        'currentAuth': ['Auth', function(Auth) {
+            // $requireAuth returns a promise so the resolve waits for it to complete
+            // If the promise is rejected, it will throw a $stateChangeError (see above)
+            return Auth.$waitForAuth();
           }]
         }
       })
@@ -57,10 +100,10 @@ angular
           }]
         }
       })
-      .state('about', {
-        url: '/about',
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
+      .state('messages', {
+        url: '/messages',
+        templateUrl: 'views/messages.html',
+        controller: 'MessagesCtrl',
         resolve: {
         // controller will not be loaded until $requireAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
@@ -81,41 +124,11 @@ angular
         'currentAuth': ['Auth', function(Auth) {
           // $requireAuth returns a promise so the resolve waits for it to complete
           // If the promise is rejected, it will throw a $stateChangeError (see above)
-          return Auth.$requireAuth();
-        }]
-      }
-   
-      })
-      .state('portfolio', {
-        url: '/portfolio',
-        templateUrl: 'views/portfolio.html',
-        controller: 'PortfolioCtrl',
-        resolve: {
-        // controller will not be loaded until $requireAuth resolves
-        // Auth refers to our $firebaseAuth wrapper in the example above
-        'currentAuth': ['Auth', function(Auth) {
-          // $requireAuth returns a promise so the resolve waits for it to complete
-          // If the promise is rejected, it will throw a $stateChangeError (see above)
-          return Auth.$requireAuth();
-        }]
-      }
-
-      })
-      .state('inquire', {
-        url: '/inquire',
-        templateUrl: 'views/inquire.html',
-        controller: 'InquireCtrl',
-        resolve: {
-        // controller will not be loaded until $requireAuth resolves
-        // Auth refers to our $firebaseAuth wrapper in the example above
-        'currentAuth': ['Auth', function(Auth) {
-          // $requireAuth returns a promise so the resolve waits for it to complete
-          // If the promise is rejected, it will throw a $stateChangeError (see above)
-          return Auth.$requireAuth();
-        }]
-      }
-   
+            return Auth.$requireAuth();
+          }]
+        }
       });
+      
       
     $urlRouterProvider
       .otherwise('/');
@@ -131,7 +144,7 @@ angular
     // We can catch the error thrown when the $requireAuth promise is rejected
     // and redirect the user back to the home page
     if (error === 'AUTH_REQUIRED') {
-      $state.go('login');
+      $state.go('about');
       }
     });
   });

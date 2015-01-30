@@ -16,20 +16,19 @@
     <br>
     <div class="row" ng-show="toggleLogin">
       <big>or</big><br><br>
-      <button class="btn btn-success login-buttons" ng-show="toggleLogin" ng-click="toggleLogin = false">Login with Email & Password</button>
+      <button class="btn btn-success login-buttons" ng-show="toggleLogin" ng-click="toggleLogin = false">Email & Password</button>
     </div>
     <form role="form" ng-hide="toggleLogin" >
     <p class="form-group">
-      <label for="loginEmail">email</label>
-      <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control" />
+      <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control"  placeholder="Email" />
     </p>
     <p class="form-group">
-      <label for="loginPass">password</label>
-      <input id="loginPass" required name="pass" type="password" ng-model="password" class="form-control" />
+      <input id="loginPass" required name="pass" type="password" ng-model="password" class="form-control"  placeholder="Password"/>
     </p>
+    <p style="color:red"> {{ message }} </p>
     <br>
     <p>
-      <button  class="btn btn-success" ng-click="loginEmailPass()">Log In</button>
+      <button  class="btn btn-success" style="background-color:#5cb85c; color:white;" ng-click="loginEmailPass()">Log In</button>
       <button  class="btn btn-warning" ng-click="registerEmailPass()">Register</button>
     </p>
     </form>
