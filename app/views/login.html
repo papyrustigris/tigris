@@ -1,7 +1,8 @@
 <div id="box" class="container" style="text-align:center;">
   <h1>Login</h1>
   <hr>
-<fieldset>
+<div class="row">
+  <fieldset ng-show="toggleLogin">
   <br>
   <p>
     <button  class="btn btn-primary login-buttons" ng-click="doLoginFb()"><i class="fa fa-facebook"></i> &nbsp; Facebook</button>
@@ -9,29 +10,30 @@
     <button  class="btn btn-info login-buttons" ng-click="doLoginTwitter()"><i class="fa fa-twitter"></i> &nbsp; Twitter</button>
   </p>
 </fieldset>
-
-
-<div class="row">
   <div class="col-sm-6 col-sm-offset-3">
     <br>
     <div class="row" ng-show="toggleLogin">
       <big>or</big><br><br>
       <button class="btn btn-success login-buttons" ng-show="toggleLogin" ng-click="toggleLogin = false">Email & Password</button>
     </div>
-    <form role="form" ng-hide="toggleLogin" >
-    <p class="form-group">
-      <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control"  placeholder="Email" />
-    </p>
-    <p class="form-group">
-      <input id="loginPass" required name="pass" type="password" ng-model="password" class="form-control"  placeholder="Password"/>
-    </p>
-    <p style="color:red"> {{ message }} </p>
-    <br>
-    <p>
-      <button  class="btn btn-success" style="background-color:#5cb85c; color:white;" ng-click="loginEmailPass()">Log In</button>
-      <button  class="btn btn-warning" ng-click="registerEmailPass()">Register</button>
-    </p>
-    </form>
+    <div ng-hide="toggleLogin" style="margin-top:-30px;">
+      <button id="toggleLoginOptions" class="pull-right" ng-click="toggleLogin=true"><i class="fa fa-close" style="color:#C9302C; font-size:26px;"></i></button>
+      <form role="form">
+        <p class="form-group">
+          <input id="loginEmail" required name="email" type="email" ng-model="email" class="form-control"  placeholder="Email" />
+        </p>
+        <p class="form-group">
+          <input id="loginPass" required name="pass" type="password" ng-model="password" class="form-control"  placeholder="Password"/>
+        </p>
+        
+        <p>
+           <button  class="btn logReg" ng-click="loginEmailPass()"><b>Log In</b></button>
+           &nbsp;
+           <button  class="btn logReg" ng-click="registerEmailPass()"><b>Register</b></button> 
+        </p>
+      </form>
+      <p style="color:red"> {{ message }} </p>
+    </div>
   </div>
 </div>
 <p ng-show="err" class="bg-danger" ng-model="message">{{ message }}</p>

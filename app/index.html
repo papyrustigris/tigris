@@ -15,19 +15,38 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/sb-admin.css">
-    <link rel="stylesheet" href="styles/spartan.css">
-    <link rel="stylesheet" href="styles/junction.css">
-    <!-- endbuild -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+
     <style>
       
      body{
-        font-family: 'Courier New';
+        font-family: 'Arvo';
         background:url('styles/images/LemonBkgrnd.jpg');
         background-size: 100%;
         background-repeat: no-repeat;
       }
       
+      input#loginEmail, input#loginPass {
+        border-radius: 2px;
+        border:2px solid black;
+        color:black;
+        height:100%;
+        width:100%;
+        font-size:18px;
+      }
+
+      .logReg {
+        background-color:#FEF25F;
+        color:black;
+        border:3px solid #FEF25F;
+      }
+      #toggleLoginOptions {
+        background:none;
+        border:none;
+        font-size:36px;
+      }
 
       .navbar {
         background-color: black;
@@ -45,7 +64,7 @@
       }
 
       #box {
-        padding:40px; margin-top:100px; margin-bottom:40px; 
+        padding:40px; margin-top:80px; margin-bottom:40px; 
         background-color:none;
         border-radius:4px;
       }
@@ -122,7 +141,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" ui-sref="about"><i class="fa fa-lemon-o" style="color:#EFD82D; font-weight:bold;"></i>&nbsp;lemongate</a>
+                <a class="navbar-brand" ui-sref="about"><i class="fa fa-lemon-o" style="color:#EFD82D; font-weight:bold;"></i>&nbsp;&nbsp;lemongate</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -145,7 +164,7 @@
                         <a ui-sref="inquiry" ng-hide="user"><i class="fa fa-info-circle"></i> &nbsp; Inquiry</a>
                     </li>
                     <li>
-                        <a ui-sref="messages" ng-show="user"><i class="fa fa-fw fa-envelope"></i> &nbsp; Messages</a>
+                        <a ui-sref="messages" ng-show="user"><i class="fa fa-fw fa-envelope"></i> &nbsp; Message</a>
                     </li>
                     <li>
                         <a ui-sref="account" ng-show="user">&nbsp;<i class="fa fa-dollar"></i> &nbsp; Payment</a>
