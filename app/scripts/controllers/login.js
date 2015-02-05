@@ -15,11 +15,14 @@ angular.module('tigrisApp')
    	// sync = $firebase(ref),
    	auth = $firebaseAuth(ref),
    	
-   	fbRef = $firebase(ref.child('/users/facebook/')),
-   	googleRef = $firebase(ref.child('/users/google/')),
-   	twitterRef = $firebase(ref.child('/users/twitter/')),
-	passRef = $firebase(ref.child('/users/pass/')),
+   //	fbRef = $firebase(ref.child('/users/facebook/')),
+   //	googleRef = $firebase(ref.child('/users/google/')),
+   //	twitterRef = $firebase(ref.child('/users/twitter/')),
+   //	passRef = $firebase(ref.child('/users/pass/')),
 	
+	sessionRef = $firebase(ref.child('/session/')),
+	userRef = $firebase(ref.child('/users/')),
+
 	toggleLogin = '';
 
 	$scope.loginEmailPass = function () {
@@ -28,7 +31,7 @@ angular.module('tigrisApp')
 		  password: $scope.password
 		}).then(function(authData) {
 		  console.log('Logged in as:', authData.uid);
-		  passRef.$push(authData);
+		  sessionRef.$push(authData.uid);
 		}).catch(function(error) {
 		  console.error('Error: ', error);
 		  $scope.message = 'authentication failed: ' + error;
@@ -47,7 +50,8 @@ angular.module('tigrisApp')
 		  });
 		}).then(function(authData) {
 		  console.log('logged in as:', authData.uid);
-		  passRef.$push(authData);
+		  userRef.$push(authData.uid);
+		  sessionRef.$push(authData);
 		}).catch(function(error) {
 		  console.error('Error: ', error);
 		  $scope.message = 'authentication failed: ' + error;
@@ -56,8 +60,9 @@ angular.module('tigrisApp')
 
 	$scope.doLoginFb = function () {
 		auth.$authWithOAuthPopup('facebook').then(function(authData) {
-			fbRef.$push(authData).then(function () {
-				console.log('authenticated successfully with payload:', authData);
+			sessionRef.$push(authData);
+			userRef.$push(authData.uid).then(function () {
+				console.log('authenticated successfully with payload:', authData.uid);
 			}).catch(function(error){
 			console.log('authentication failed:', error);
 			$scope.message = 'authentication failed: ' + error;
@@ -67,8 +72,9 @@ angular.module('tigrisApp')
 
 	$scope.doLoginGoogle = function () {
 		auth.$authWithOAuthPopup('google').then(function(authData) {
-			googleRef.$push(authData).then(function () {
-				console.log('authenticated successfully with payload:', authData);
+			sessionRef.$push(authData);
+			userRef.$push(authData.uid).then(function () {
+				console.log('authenticated successfully with payload:', authData.uid);
 			}).catch(function(error){
 			console.log('authentication failed:', error);
 			$scope.message = 'authentication failed: ' + error;
@@ -78,8 +84,9 @@ angular.module('tigrisApp')
 
 	$scope.doLoginTwitter = function () {
 		auth.$authWithOAuthPopup('twitter').then(function(authData) {
-			twitterRef.$push(authData).then(function () {
-				console.log('authenticated successfully with payload:', authData);
+			sessionRef.$push(authData);
+			userRef.$push(authData.uid).then(function () {
+				console.log('authenticated successfully with payload:', authData.uid);
 			}).catch(function(error){
 			console.log('authentication failed:', error);
 			$scope.message = 'authentication failed: ' + error;

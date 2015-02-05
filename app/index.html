@@ -36,7 +36,7 @@
        
       .side-nav {
         height:100%;
-        background-color:#3D444B;
+        background-color:#F0E4C3;
 
       }
       .vertical-align {
@@ -78,17 +78,17 @@
         color:#5cb85c;
       }
       .navbar-inverse .navbar-nav > li > a {
-        color:#FCE7D1;
+        color:#292D33;
         font-size: 15px;
       }
 
       .navbar-inverse .navbar-brand {
-        color:#FCE7D1;
+        color:#F0E3C2;
         font-size: 20px;
       }
 
       .top-nav>li>a {
-        color:#FCE7D1;
+        color:#F0E3C2;
       }
 
       h1 {
@@ -137,21 +137,20 @@
                     <li>
                         <a ui-sref="login" ng-hide="user"><i class="fa fa-key"></i> &nbsp; Login</a>
                     </li>
-                    
                     <li>
                         <a ui-sref="portfolio" ng-hide="user"><i class="fa fa-diamond"></i> &nbsp; Portfolio</a>
-                    </li>
-                    <li>
-                        <a ui-sref="messages" ng-hide="!user"><i class="fa fa-fw fa-envelope"></i> &nbsp; Messages</a>
-                    </li>
-                    <li>
-                        <a ui-sref="account" ng-hide="!user">&nbsp;<i class="fa fa-dollar"></i> &nbsp; Payment</a>
                     </li>
                     <li>
                         <a ui-sref="inquiry" ng-hide="user"><i class="fa fa-info-circle"></i> &nbsp; Inquiry</a>
                     </li>
                     <li>
-                        <a href="#" ng-click="auth.$unauth()" ng-hide="!user"><i class="fa fa-fw fa-power-off"></i> &nbsp; Log Out</a>
+                        <a ui-sref="messages" ng-show="user"><i class="fa fa-fw fa-envelope"></i> &nbsp; Messages</a>
+                    </li>
+                    <li>
+                        <a ui-sref="account" ng-show="user">&nbsp;<i class="fa fa-dollar"></i> &nbsp; Payment</a>
+                    </li>
+                    <li>
+                        <a href="#" ng-click="auth.$unauth()" ng-show="user"><i class="fa fa-fw fa-power-off"></i> &nbsp; Log Out</a>
                     </li>
                     
                    
