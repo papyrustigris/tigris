@@ -48,7 +48,7 @@ angular
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
+        controller: 'AuthCtrl',
         resolve: {
         // controller will not be loaded until $waitForAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above

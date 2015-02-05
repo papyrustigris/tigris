@@ -112,7 +112,8 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"
+        ng-controller="AuthCtrl">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -126,14 +127,14 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 
-                <li class="dropdown" ng-controller="AuthCtrl">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-cloak><i class="fa fa-user" ng-show="user"></i>&nbsp; {{ user.facebook.displayName }} {{ user.google.displayName }} {{ user.twitter.displayName }} {{ user.password.email }}</a>
                     
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav" ng-controller="AuthCtrl">
+                <ul class="nav navbar-nav side-nav">
                     <li>
                         <a ui-sref="login" ng-hide="user"><i class="fa fa-key"></i> &nbsp; Login</a>
                     </li>
