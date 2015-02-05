@@ -10,16 +10,19 @@
  * Controller of the tigrisApp
  */
 angular.module('tigrisApp')
-  .controller('AuthCtrl', function($state, $scope, $firebase, $firebaseAuth, $timeout, Auth, FB_URL) {
+  .controller('AuthCtrl', 
+  	function ($state, $scope, $firebase, $firebaseAuth, $timeout, Auth, FB_URL) {
+	  
 	  $scope.auth = Auth;
 	  $scope.auth.$onAuth(function(authData) {
 	    $timeout(function() {
 	      $scope.user = authData;
 	      
-	      if(authData){ $state.go('account'); }
-	      	else
-	      		{$state.go('login');}
-
+	      if (authData) { 
+	      	$state.go('messages'); 
+	      }	else {
+	      	$state.go('login');
+	      };
 	    });
 	  });
 	
@@ -33,18 +36,21 @@ angular.module('tigrisApp')
    //	twitterRef = $firebase(ref.child('/users/twitter/')),
    //	passRef = $firebase(ref.child('/users/pass/')),
 	
-	sessionRef = $firebase(ref.child('/session/')),
-	userRef = $firebase(ref.child('/users/')),
+	usersRef = $firebase(ref.child('/users/')),
 
 	toggleLogin = '';
 
 	$scope.loginEmailPass = function () {
+
 		auth.$authWithPassword({
 		  email: $scope.email,
 		  password: $scope.password
 		}).then(function(authData) {
+
+		  var userRef = $firebase(ref.child('/users/'+authData.uid));
+		  userRef.$set(authData);
 		  console.log('Logged in as:', authData.uid);
-		  sessionRef.$push(authData.uid);
+
 		}).catch(function(error) {
 		  console.error('Error: ', error);
 		  $scope.message = 'authentication failed: ' + error;
@@ -52,28 +58,43 @@ angular.module('tigrisApp')
 	};
 
 	$scope.registerEmailPass = function () {
+
 		Auth.$createUser({
 		  email: $scope.email,
 		  password: $scope.password 
 		}).then(function(userData) {
+
 		  console.log('User ' + userData.uid + ' created successfully!');
 		  return auth.$authWithPassword({
 		    email: $scope.email,
 		    password: $scope.password
 		  });
+
 		}).then(function(authData) {
-		  console.log('logged in as:', authData.uid);
-		  userRef.$push(authData.uid);
-		  sessionRef.$push(authData);
+
+		  var userRef = $firebase(ref.child('/users/'+authData.uid));
+		  userRef.$set(authData);
+		  console.log('Logged in as:', authData.uid);
+
 		}).catch(function(error) {
+
 		  console.error('Error: ', error);
 		  $scope.message = 'authentication failed: ' + error;
+
 		});
 	};
 
 	$scope.doLoginFb = function () {
+
 		auth.$authWithOAuthPopup('facebook').then(function(authData) {
-			sessionRef.$push(authData);
+			
+			var userRef = $firebase(ref.child('/users/'+authData.uid));
+
+			userRef.$set(authData).then(function (ref) {
+				var seshKey = ref.key();
+				console.log('key: '+ seshKey);
+			});
+			
 			userRef.$push(authData.uid).then(function () {
 				console.log('authenticated successfully with payload:', authData.uid);
 			}).catch(function(error){
@@ -84,25 +105,41 @@ angular.module('tigrisApp')
 	};
 
 	$scope.doLoginGoogle = function () {
+
 		auth.$authWithOAuthPopup('google').then(function(authData) {
-			sessionRef.$push(authData);
+			
+			var userRef = $firebase(ref.child('/users/'+authData.uid));
+
+			userRef.$set(authData).then(function (ref) {
+				var seshKey = ref.key();
+				console.log('key: '+ seshKey);
+			});
+			
 			userRef.$push(authData.uid).then(function () {
 				console.log('authenticated successfully with payload:', authData.uid);
 			}).catch(function(error){
-			console.log('authentication failed:', error);
-			$scope.message = 'authentication failed: ' + error;
+				console.log('authentication failed:', error);
+				$scope.message = 'authentication failed: ' + error;
 			});
 		});
 	};
 
 	$scope.doLoginTwitter = function () {
+
 		auth.$authWithOAuthPopup('twitter').then(function(authData) {
-			sessionRef.$push(authData);
+			
+			var userRef = $firebase(ref.child('/users/'+authData.uid));
+
+			userRef.$set(authData).then(function (ref) {
+				var seshKey = ref.key();
+				console.log('key: '+ seshKey);
+			});
+			
 			userRef.$push(authData.uid).then(function () {
 				console.log('authenticated successfully with payload:', authData.uid);
 			}).catch(function(error){
-			console.log('authentication failed:', error);
-			$scope.message = 'authentication failed: ' + error;
+				console.log('authentication failed:', error);
+				$scope.message = 'authentication failed: ' + error;
 			});
 		});
 	};
@@ -112,7 +149,6 @@ angular.module('tigrisApp')
 	};
 
 	$scope.logout = function () {
-		$state.go('about');
-		auth.$unauth();
+		Auth.$unauth();	
 	};
   });
