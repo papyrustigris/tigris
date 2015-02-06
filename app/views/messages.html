@@ -2,4 +2,8 @@
 	<h1>Message</h1>
 	<hr>
 	<br>
+	<form>
+  	  <input placeholder="Message..." ng-model="newMessage">
+	  <button type="submit" ng-click="addMessage(newMessage);newMessage = null;">send</button>
+	</form>
 </div>
