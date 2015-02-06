@@ -1,5 +1,9 @@
 /* Space out content a bit */
 
+@font-face {
+  font-family: Chalet;
+  src: url("nyc1980.otf") format("opentype");
+}
 
 body {
   height:100%;
