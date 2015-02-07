@@ -86,10 +86,10 @@ angular
           }]
         }
       })
-      .state('account', {
-        url: '/account',
-        templateUrl: 'views/account.html',
-        controller: 'AccountCtrl',
+      .state('outbox', {
+        url: '/outbox',
+        templateUrl: 'views/outbox.html',
+        controller: 'OutboxCtrl',
         resolve: {
         // controller will not be loaded until $requireAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
@@ -100,10 +100,10 @@ angular
           }]
         }
       })
-      .state('messages', {
-        url: '/messages',
-        templateUrl: 'views/messages.html',
-        controller: 'MessagesCtrl',
+      .state('inbox', {
+        url: '/inbox',
+        templateUrl: 'views/inbox.html',
+        controller: 'InboxCtrl',
         resolve: {
         // controller will not be loaded until $requireAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
@@ -113,22 +113,7 @@ angular
           return Auth.$requireAuth();
           }]
         }
-      })
-      .state('payment', {
-        url: '/payment',
-        templateUrl: 'views/payment.html',
-        controller: 'PaymentCtrl',
-        resolve: {
-        // controller will not be loaded until $requireAuth resolves
-        // Auth refers to our $firebaseAuth wrapper in the example above
-        'currentAuth': ['Auth', function(Auth) {
-          // $requireAuth returns a promise so the resolve waits for it to complete
-          // If the promise is rejected, it will throw a $stateChangeError (see above)
-            return Auth.$requireAuth();
-          }]
-        }
-      });
-      
+      });     
       
     $urlRouterProvider
       .otherwise('/');

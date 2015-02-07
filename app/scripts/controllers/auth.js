@@ -19,7 +19,7 @@ angular.module('tigrisApp')
 	      $scope.user = authData;
 	      
 	      if (authData) { 
-	      	$state.go('messages'); 
+	      	$state.go('inbox'); 
 	      }	else {
 	      	$state.go('login');
 	      };

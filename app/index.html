@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/sb-admin.css">
 
-    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
     <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 
     <style>
@@ -30,7 +29,7 @@
       
       input#loginEmail, input#loginPass {
         border-radius: 2px;
-        border:2px solid black;
+        border:3px solid #FEF25F;
         color:black;
         height:100%;
         width:100%;
@@ -164,10 +163,10 @@
                         <a ui-sref="inquiry" ng-hide="user"><i class="fa fa-info-circle"></i> &nbsp; Inquiry</a>
                     </li>
                     <li>
-                        <a ui-sref="messages" ng-show="user"><i class="fa fa-fw fa-envelope"></i> &nbsp; Message</a>
+                        <a ui-sref="inbox" ng-show="user"><i class="fa fa-fw fa-envelope"></i> &nbsp; Inbox</a>
                     </li>
                     <li>
-                        <a ui-sref="account" ng-show="user">&nbsp;<i class="fa fa-dollar"></i> &nbsp; Payment</a>
+                        <a ui-sref="outbox" ng-show="user">&nbsp;<i class="fa fa-paper-plane"></i> &nbsp; Send</a>
                     </li>
                     <li>
                         <a href="#" ng-click="logout(user)" ng-show="user"><i class="fa fa-fw fa-power-off"></i> &nbsp; Log Out</a>
@@ -224,8 +223,9 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/auth.js"></script>
+    <script src="scripts/controllers/inbox.js"></script>
+    <script src="scripts/controllers/outbox.js"></script>
     <script src="scripts/controllers/inquiry.js"></script>
-    <script src="scripts/controllers/payment.js"></script>
     <script src="scripts/controllers/portfolio.js"></script>
     <!-- endbuild -->
     <script>
