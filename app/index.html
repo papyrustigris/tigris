@@ -31,7 +31,7 @@
         border-radius: 2px;
         border:3px solid #FEF25F;
         color:black;
-        height:100%;
+        height:120%;
         width:100%;
         font-size:18px;
       }
@@ -51,7 +51,11 @@
         background-color: black;
         border: 1px solid black;
       }
-       
+
+      .navbar-header {
+        display:inline;
+      }
+     
       .side-nav {
         height:100%;
         background-color:#FEF25F;
@@ -115,7 +119,8 @@
       h1,p,a {
         color:black;
       }
-    
+      
+
       [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
@@ -141,15 +146,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" ui-sref="about"><i class="fa fa-lemon-o" style="color:#EFD82D;"></i>&nbsp;lemongate</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
+                <ul class="nav navbar-right top-nav">
                 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-cloak><i class="fa fa-user" ng-show="user"></i>&nbsp; {{ user.facebook.displayName }} {{ user.google.displayName }} {{ user.twitter.displayName }} {{ user.password.email }}</a>
-                    
+                <li class="dropdown pull-right">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-cloak><i class="fa fa-user" ng-show="user"></i>&nbsp;{{ user.facebook.displayName }} {{ user.google.displayName }} {{ user.twitter.displayName }} {{ user.password.name }}</a>
+  
                 </li>
             </ul>
+            </div>
+            <!-- Top Menu Items -->
+            
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">

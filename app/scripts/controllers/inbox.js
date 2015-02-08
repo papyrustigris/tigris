@@ -23,6 +23,7 @@ angular.module('tigrisApp')
 
   	$scope.inboxArray = function () {
   		var inboxArray = inboxRef.$asArray();
+      console.log(inboxArray);
   	};
 
   });

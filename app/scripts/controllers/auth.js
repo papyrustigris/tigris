@@ -44,7 +44,7 @@ angular.module('tigrisApp')
 
 		auth.$authWithPassword({
 		  email: $scope.email,
-		  password: $scope.password
+		  password: $scope.password,
 		}).then(function(authData) {
 
 		  var userRef = $firebase(ref.child('/users/'+authData.uid));
@@ -61,7 +61,7 @@ angular.module('tigrisApp')
 
 		Auth.$createUser({
 		  email: $scope.email,
-		  password: $scope.password 
+		  password: $scope.password,
 		}).then(function(userData) {
 
 		  console.log('User ' + userData.uid + ' created successfully!');
