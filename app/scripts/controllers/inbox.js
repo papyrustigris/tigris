@@ -16,13 +16,8 @@ angular.module('tigrisApp')
     inboxList = inboxRef.$asArray();
 
     inboxList.$loaded().then(function() {
-      console.log("list has " + inboxList.length + " item(s)");
+      $scope.list = inboxList;
     });
-
-    $scope.list = inboxList;
-
-    // we can add it directly to $scope if we want to access this from the DOM
-    
 
   	$scope.funktion = function () {
   		inboxRef.$push({
