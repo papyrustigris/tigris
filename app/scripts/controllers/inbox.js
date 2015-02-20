@@ -12,12 +12,22 @@ angular.module('tigrisApp')
 
   	var ref = new Firebase(FB_URL),
   	authData = Auth.$getAuth(),
-  	inboxRef = $firebase(ref.child('/messages/'+ authData.uid + '/inbox/'));
+  	inboxRef = $firebase(ref.child('/messages/'+ authData.uid + '/inbox/')),
+    inboxList = inboxRef.$asArray();
+
+    inboxList.$loaded().then(function() {
+      console.log("list has " + inboxList.length + " item(s)");
+    });
+
+    $scope.list = inboxList;
+
+    // we can add it directly to $scope if we want to access this from the DOM
+    
 
   	$scope.funktion = function () {
   		inboxRef.$push({
-  			name: 'bob',
-  			msg: 'hello motherfucking world'
+  			name: 'billy',
+  			msg: 'ayaella'
   		});
   	};
 

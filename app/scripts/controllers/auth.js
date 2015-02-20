@@ -18,11 +18,12 @@ angular.module('tigrisApp')
 	    $timeout(function() {
 	      $scope.user = authData;
 	      
-	      if (authData) { 
-	      	$state.go('inbox'); 
-	      }	else {
+	      if (!authData) {
 	      	$state.go('login');
-	      };
+	      } else {
+	      	$state.go('inbox');
+	      }; 
+	      	
 	    });
 	  });
 	
