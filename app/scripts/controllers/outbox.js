@@ -12,7 +12,7 @@ angular.module('tigrisApp')
 
   	var ref = new Firebase(FB_URL),
   	authData = Auth.$getAuth(),
-  	outboxRef = $firebase(ref.child('/messages/'+ authData.uid + '/outbox/'));
+  	outboxRef = $firebase(ref.child('/UserMessages/'+ authData.uid + '/outbox/'));
 
   	$scope.funktion = function () {
   		outboxRef.$push({

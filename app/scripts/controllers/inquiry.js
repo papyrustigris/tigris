@@ -13,7 +13,7 @@ angular.module('tigrisApp')
     // sync = $firebase(ref),
     auth = $firebaseAuth(ref),
     
-    msgRef = $firebase(ref.child('/messages/'));
+    msgRef = $firebase(ref.child('/Inquiries/'));
 
    	$scope.submitInquiry = function () {
    		msgRef.$push({ 
